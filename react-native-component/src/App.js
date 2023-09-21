@@ -12,8 +12,10 @@ const App = () => {
         justifyContent: 'center',
       }}
     >
-      <Text style={{fontSize: 30, marginBottom: 10}}>Button Component</Text>
-      <MyButton />
+      <Text style={{fontSize: 30, marginBottom: 10}}>Props</Text>
+      <MyButton title="Button" onPress={() => alert('props')}/> 
+      <MyButton title="Button" onPress={() => alert('children')}> Children Props</MyButton>
+      <MyButton onPress={() => alert('default')}/> 
     </View>
   );
 };
