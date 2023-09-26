@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components/native';
 import Button from './components/Button';
+import Input from './components/Input';
 
 const Container = styled.View`
     flex: 1;
@@ -14,6 +15,8 @@ const App = () => {
         <Container>
             <Button title="keunha"/>
             <Button title="React Native"/>
+            <Input borderColor="#3498db"/>
+            <Input borderColor="#9b59b6"/>
         </Container>
     )
 };
