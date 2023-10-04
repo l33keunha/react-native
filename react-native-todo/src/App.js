@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { StatusBar } from 'react-native';
+import { Dimensions, StatusBar } from 'react-native';
 import styled, { ThemeProvider } from 'styled-components/native';
 import { theme } from "./theme";
 import Input from "./components/Input";
 import { images } from './images';
-import IconButton from "./components/IconButton";
+import Task from "./components/Task";
 
 const Container = styled.SafeAreaView`
     flex: 1;
@@ -19,8 +19,13 @@ const Title = styled.Text`
     aling-self: flex-start;
     margin: 20px;
 `;
+const List = styled.ScrollView`
+    flex: 1;
+    width: ${({ width }) => width - 40}px;
+`
 
 export default function App(){
+    const width = Dimensions.get('window').width;
     const [newTask, setNewTask ] = useState('');
 
     const _addTask = () => {
@@ -46,10 +51,12 @@ export default function App(){
                     onChangeText={_handleTextChange}
                     onSubmitEditing={_addTask}
                 />
-                <IconButton type={images.uncompleted}/>
-                <IconButton type={images.completed}/>
-                <IconButton type={images.delete}/>
-                <IconButton type={images.update}/>
+                <List width={width}>
+                    <Task text="keunha"/>
+                    <Task text="react native"/>
+                    <Task text="React Native Sample"/>
+                    <Task text="Edit Todo Item"/>
+                </List>
             </Container>
         </ThemeProvider>
     );

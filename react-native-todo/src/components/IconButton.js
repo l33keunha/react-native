@@ -12,7 +12,7 @@ const Icon = styled.Image`
 `;
 
 const IconButton = ({ type, onPressOut }) => {
-    retrun (
+    return (
         <TouchableOpacity onPressOut={onPressOut}>
             <Icon source={type} />
         </TouchableOpacity>
