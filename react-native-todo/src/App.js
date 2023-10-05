@@ -26,12 +26,38 @@ const List = styled.ScrollView`
 
 export default function App(){
     const width = Dimensions.get('window').width;
-    const [newTask, setNewTask ] = useState('');
 
+    const [newTask, setNewTask ] = useState('');
+    const [tasks, setTasks] = useState({
+        '1': { id: '1', text: 'keunha', completed: false},
+        '2': { id: '2', text: 'react native', completed: true},
+        '3': { id: '3', text: 'React Native Sample', completed: false},
+        '4': { id: '4', text: 'Edit TODO Item', completed: false},
+    })
+
+    // 추가
     const _addTask = () => {
-        alert(`Add: ${newTask}`);
+        const ID = Date.now().toString();
+        const NewTaskObject = {
+            [ID]: { id:ID, text: newTask, completed: false },
+        };
         setNewTask('');
+        setTasks({ ...tasks, ...NewTaskObject });
     };
+
+    // 삭제
+    const _deleteTask = id => {
+        const currentTasks = Object.assign({}, tasks);
+        delete currentTasks[id];
+        setTasks(currentTasks);
+    }
+
+    // 완료
+    const _toggleTask = id => {
+        const currentTasks = Object.assign({}, tasks);
+        currentTasks[id]['completed'] = !currentTasks[id]['completed'];
+        setTasks(currentTasks);
+    }
 
     const _handleTextChange = text => {
         setNewTask(text);
@@ -52,10 +78,16 @@ export default function App(){
                     onSubmitEditing={_addTask}
                 />
                 <List width={width}>
-                    <Task text="keunha"/>
-                    <Task text="react native"/>
-                    <Task text="React Native Sample"/>
-                    <Task text="Edit Todo Item"/>
+                    {Object.values(tasks)
+                    .reverse()
+                    .map(item => (
+                        <Task 
+                        key={item.id} 
+                        item={item} 
+                        deleteTask={_deleteTask} 
+                        toggleTask={_toggleTask}
+                        />
+                    ))}
                 </List>
             </Container>
         </ThemeProvider>
