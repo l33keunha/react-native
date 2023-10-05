@@ -59,6 +59,17 @@ export default function App(){
         setTasks(currentTasks);
     }
 
+    // 수정
+    const _updateTask = item => {
+        const currentTasks = Object.assign({}, tasks);
+        currentTasks[item.id] = item;
+        setTasks(currentTasks);
+    }
+
+    const _onBlur = () => {
+        setNewTask('');
+    }
+
     const _handleTextChange = text => {
         setNewTask(text);
       };
@@ -76,6 +87,7 @@ export default function App(){
                     value={newTask}
                     onChangeText={_handleTextChange}
                     onSubmitEditing={_addTask}
+                    onBlur={_onBlur}
                 />
                 <List width={width}>
                     {Object.values(tasks)
@@ -86,6 +98,7 @@ export default function App(){
                         item={item} 
                         deleteTask={_deleteTask} 
                         toggleTask={_toggleTask}
+                        updateTask={_updateTask}
                         />
                     ))}
                 </List>
