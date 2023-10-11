@@ -1,8 +1,8 @@
 import React from "react";
-import styled from "styled-components";
+import styled from "styled-components/native";
 
-const Container = styled.TouchabledOpacity`
-    backgound-color: #3498db;
+const Container = styled.TouchableOpacity`
+    background-color: #3498db;
     border-radius: 15px;
     padding: 15px 30px;
     margin: 10px 0px;
@@ -14,12 +14,12 @@ const Title = styled.Text`
     color: #ffffff;
 `;
 
-const Button = ({ title, onPress }) =>{
+const Button = ({ title, onPress }) => {
     return (
         <Container onPress={onPress}>
             <Title>{title}</Title>
         </Container>
-    )
-}
+    );
+};
 
 export default Button;
