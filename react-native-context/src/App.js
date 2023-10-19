@@ -1,5 +1,6 @@
 import React from "react";
 import styled from 'styled-components/native';
+import User from './components/User';
 
 const Container = styled.View`
     flex: 1;
@@ -9,7 +10,9 @@ const Container = styled.View`
 `;
 
 const App = () => {
-    return <Container></Container>;
+    return <Container>
+        <User/>
+    </Container>
 }
 
 export default App;
