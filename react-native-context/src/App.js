@@ -2,6 +2,8 @@ import React from "react";
 import styled from 'styled-components/native';
 import User from './components/User';
 import UserContext from "./contexts/User";
+import { UserProvider  } from "./contexts/User";
+import Input from './components/Input';
 
 const Container = styled.View`
     flex: 1;
@@ -12,11 +14,12 @@ const Container = styled.View`
 
 const App = () => {
     return (
-        <UserContext.Provider value={{name:'keunha'}}>
+        <UserProvider>
             <Container>
                 <User/>
+                <Input/>
             </Container>
-        </UserContext.Provider>
+        </UserProvider>
     )
 }
 
