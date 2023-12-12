@@ -8,11 +8,14 @@ const Stack = createStackNavigator();
 
 const StackNavigation = () => {
     return (
-        <Stack.Navigator initialRouteName="Home">
-            <Stack.Screen name = "Home" component={Home}/>
-            <Stack.Screen name = "List" component={List}/>
-            <Stack.Screen name = "Item" component={Item}/>
-        </Stack.Navigator>
+            <Stack.Navigator 
+                initialRouteName="Home"
+                screenOptions={{ cardStyle: { backgroundColor: '#ffffff' } }}
+            >
+                <Stack.Screen name = "Home" component={Home}/>
+                <Stack.Screen name = "List" component={List}/>
+                <Stack.Screen name = "Item" component={Item}/>
+            </Stack.Navigator>
     )
 }
 
